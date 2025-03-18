@@ -1,17 +1,16 @@
 import React, { useState, useEffect } from "react";
-import MyLoc from "./Myweather/MyLoc";
-import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from "recharts";
 import cloudImage from './assets/cloud.png';
 import rain from './assets/rain.webp'
 import Clear from './assets/clear.webp'
 import snow from './assets/snow.webp'
 import fog from './assets/fog.webp'
+import LocDets from "./LocDets";
+import Header from "./Header";
 
 const App = () => {
   const [CityName, setCityName] = useState("");
   const [Weather, setWeather] = useState(null);
   const [chartData, setChartData] = useState([]); 
-  const [WeatherImg, setWeatherImg] = useState('')
 
 
  
@@ -59,49 +58,23 @@ const App = () => {
     }
   };
   
-  
+  const [display, setdisplay] = useState('none')
   
   return (
-    <div className="main">
-      <div id="header">
-        <h2>ClimateX</h2>
-        <input
-          type="text"
-          value={CityName}
-          onChange={(e) => setCityName(e.target.value)}
-          onKeyDown={(e) => e.key === "Enter" && ApiCall()}
-          id="Input-Field"
-          placeholder="Enter Your Location"
-        />
-      </div>
-      <div id="Loc-details">
-        {Weather ? (
-          <>
-            <MyLoc
-              city={Weather.city}
-              country={Weather.country}
-              temp={Math.floor(Weather.temp)}
-              feelsLike={Math.floor(Weather.feels_like)}
-              humidity={Math.floor(Weather.humidity)}
-              wind={Math.floor(Weather.wind)}
-            />
-          </>
-        ) : (
-          <p id="Para">Enter a city name and press Enter to get weather data.</p>
-        )}
-        {chartData.length > 0 && (
-         <div id="Location-charts">
-              <ResponsiveContainer width='95%' height={250}>
-                <LineChart  width={650} height={250} data={chartData}>
-                  <Line type="monotone" dataKey="temp" stroke="#8884d8" strokeWidth={2} dot={false} />
-                  <XAxis dataKey="time" />
-                  <YAxis />
-                  <Tooltip />
-                </LineChart>
-              </ResponsiveContainer>
-        </div>
-      )}
-      </div>
+    <div className="main relative">
+
+     {/* <div style={{display : display}} className="suggestion"> 
+      <h1>Suggestion</h1>
+      <p onClick = {()=> setCityName("berlin") }>Berlin</p>
+      <p onClick = {()=> setCityName("london") }>London</p>
+      <p onClick = {()=> setCityName("islamabad") }>Islamabad</p>
+      <p onClick = {()=> setCityName("quetta") }>Quetta</p>
+     </div> */}
+
+     <Header setdisplay={setdisplay} setCityName={setCityName} ApiCall={ApiCall} CityName={CityName} />
+
+      <LocDets chartData={chartData}  Weather={Weather} />
+      
       {Weather ? (
         <>
           <div id="Extra-dets">
