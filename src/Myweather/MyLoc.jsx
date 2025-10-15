@@ -5,31 +5,31 @@ import { WiHumidity } from "react-icons/wi";
 
 const MyLoc = ({temp , feelsLike ,humidity , wind , city , country}) => {
   return (
-    <div id='My-Loc'>
-          <div id='my-loc-dets'>
-            <h1>{city}, <span id='City-span'> {country}</span></h1>
-            <div id="degries">
-                <h1 id='deg'>{temp}°C</h1>  
+    <div id='My-Loc' className="lg:w-[45%] w-full   flex flex-col gap-6">
+          <div id='my-loc-dets' className="w-full bg-zinc-900 h-[280px] justify-evenly p-5 px-5 rounded-xl flex flex-col gap-3 shadow-2xl text-white" >
+            <h1 className="text-4xl font-extrabold">{city}, <span className="text-sm font-light"> {country}</span></h1>
+            <div className="w-full flex items-center justify-between ">
+                <h1 className="text-5xl font-bold">{temp}°C</h1>  
                 <div id='Feels-like'>
                     <p id='feel'>Feels like <span id='span-feel'>{feelsLike}</span></p>
-                    <div id='up-down'>
-                      <FaArrowUp className='up'/> <p>{temp}</p>
-                      <FaArrowDown className='down'/> <p>{temp}</p>
+                    <div className="flex items-center gap-3">
+                      <FaArrowUp className='text-green-500'/> <p>{temp}</p>
+                      <FaArrowDown className='text-red-400'/> <p>{temp}</p>
                     </div>
                 </div>
             </div>
-            <div id="wind-humidity">
-              <div id='wind'>
-                <FiWind id='Wind-icon'/>
+            <div className="w-full flex  items-center gap-5  justify-between  ">
+              <div className=" flex items-center gap-3">
+                <FiWind   className="text-zinc-400" size={25}/>
                  <div id='speed-val'>
-                  <h3>Wind speed</h3>
+                  <h3 className="text-xl font-bold">Wind speed</h3>
                   <p>{wind}km/h</p>
                  </div>
               </div>
-              <div id='wind'>
-                <WiHumidity id='Wind-icon'/>
+              <div className=" flex items-center gap-3 pr-3  ">
+                <WiHumidity  className="text-blue-300" size={35}/>
                  <div id='speed-val'>
-                  <h3>Humidity</h3>
+                  <h3 className="text-xl font-bold">Humidity</h3>
                   <p>{humidity}%</p>
                  </div>
               </div>

@@ -7,7 +7,7 @@ const LocDets = ({Weather , chartData}) => {
     const [WeatherImg, setWeatherImg] = useState('')
 
   return (
-    <div id="Loc-details">
+    <div id="Loc-details" className='w-full mt-10 justify-evenly flex flex-wrap gap-5 items-center '>
             {Weather ? (
               <>
                 <MyLoc
@@ -20,10 +20,10 @@ const LocDets = ({Weather , chartData}) => {
                 />
               </>
             ) : (
-              <p id="Para">Enter a city name and press Enter to get weather data.</p>
+              <p className='w-full h-screen flex !p-6 items-center justify-center text-white'>Enter a city name and press Enter to get weather data.</p>
             )}
             {chartData.length > 0 && (
-             <div id="Location-charts">
+             <div className='lg:w-1/2 w-full h-fit rounded-xl bg-zinc-900'>
                   <ResponsiveContainer width='95%' height={280}>
                     <LineChart  width={650} height={250} data={chartData}>
                       <Line type="monotone" dataKey="temp" stroke="#8884d8" strokeWidth={2} dot={false} />
