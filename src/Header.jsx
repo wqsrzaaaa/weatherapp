@@ -1,9 +1,12 @@
-import React from 'react'
+import logo from '../public/logo.png'
 
 const Header = ({ setdisplay, CityName, setCityName, ApiCall }) => {
   return (
     <div id="header" className='w-full h-18 flex items-center lg:px-10 p-2 justify-between px-6  text-white'>
-      <h2 className='text-2xl font-bold'>ClimateX</h2>
+      <div className='flex items-center gap-2'> 
+        <img src={logo} className='w-12 h-12 object-cover' alt="" />
+        <h2 className='text-2xl font-bold'>ClimateX</h2>
+      </div>
       <input
         onFocus={() => setdisplay('flex')}
         type="text"
